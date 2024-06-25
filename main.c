@@ -19,7 +19,7 @@ int main() {
         for (coluna = 0; coluna < 3; coluna++) {
             tabuleiro[linha][coluna] = '.';
         }
-    }
+    }//qualquer coisaa
 
     /* //SELECIONAR ESCOLHA
     printf("Desejas ser X ou O? (Digite 1 para X e 2 para O)");
