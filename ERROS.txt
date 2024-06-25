@@ -1,0 +1,15 @@
+Tentei colocar a condição de que, caso a coordenada escolhida já
+estivesse preenchida, ele pediria outra coordenada. (Linha 29)
+
+    //Se estiver preenchido (diferente de vazio)
+            if (tabuleiro[cordL][cordC] =! Vazio){
+                printf("JA PREENCHIDO! Tente de novo!");
+            }
+
+Vazio é o ' . ' que indica que não tem nada. Seria o nosso 0, mas como fica feio 
+botar 0, sendo q ja tem 'O', então optei por esse trem ai.
+No caso, se a coordernada escolhida fosse diferente de 0.
+O ERRO É: O código DELETA o ' . ' quando o usuario escolhe a coordernada, e não coloca
+o X no lugar. Então o usuario pode deletar o tabuleiro inteiro se quiser. Além de que
+também pode escolher a mesma coordernada varias vezes, como se não estivesse nada la realmente
+Então nem a mensagem de "JA PREENCHIDO! Tente de novo!" aparece.
