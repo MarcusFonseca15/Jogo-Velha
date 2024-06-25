@@ -62,6 +62,6 @@ while (1){
             printf("\n");
         }
     }
-
+//aborto desgrama
         return 0;
 }
