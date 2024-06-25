@@ -20,7 +20,7 @@ int main() {
             tabuleiro[linha][coluna] = '.';
         }
     }
-    
+
     /* //SELECIONAR ESCOLHA
     printf("Desejas ser X ou O? (Digite 1 para X e 2 para O)");
     scanf("%d", &escolha);
