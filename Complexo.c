@@ -5,7 +5,7 @@ int main(){
 int linha, coluna;
 char tabuleiro[3][3];
 int coordL,coordC;
-
+ 
 for (linha=0; linha<3; linha++){           //Com esses dois loops, coloca um
     for (coluna=0; coluna<3; coluna++){   //underline em cada posição do tabu
         tabuleiro[linha][coluna] = '.';
