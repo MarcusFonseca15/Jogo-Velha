@@ -13,3 +13,11 @@ O ERRO É: O código DELETA o ' . ' quando o usuario escolhe a coordernada, e n�
 o X no lugar. Então o usuario pode deletar o tabuleiro inteiro se quiser. Além de que
 também pode escolher a mesma coordernada varias vezes, como se não estivesse nada la realmente
 Então nem a mensagem de "JA PREENCHIDO! Tente de novo!" aparece.
+
+//Rodada + Jogador/ Falta corrigir erro Vazio
+//rodada será aumentada +1 a cada jogada, até atingir o max 9 (velha), mas parará caso alguem
+//vença. Faço um FOR gigante dentro do jogo todo? E dai quando alguem vencer, rodada
+//recebe +10 só pra ficar maior que 9 e parar por ai?
+
+//acho que é meio que isso mesmo, coloca uma opção de jogar de novo, aí switch case 1 ou 0 tlgd,
+//aí a depender da resposta, ele fica em um while, ou do while

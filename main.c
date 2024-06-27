@@ -2,66 +2,93 @@
 #include <stdlib.h>
 #define JogX 'X'
 #define JogO 'O'
-#define Vazio '.'
-//Rodada + Jogador/ Falta corrigir erro Vazio
-//rodada será aumentada +1 a cada jogada, até atingir o max 9 (velha), mas parará caso alguem
-//vença. Faço um FOR gigante dentro do jogo todo? E dai quando alguem vencer, rodada
-//recebe +10 só pra ficar maior que 9 e parar por ai?
+#define Vazio ' '
 
-//acho que é meio que isso mesmo, coloca uma opção de jogar de novo, aí switch case 1 ou 0 tlgd,
-//aí a depender da resposta, ele fica em um while, ou do while
 int main() {
-    int linha, coluna, coordL, coordC;
-    int rodada, vitoria, user, escolha;
-    char tabuleiro[3][3];
+    int coordL, coordC;
+    int rodada = 1, win = 0, escolha = 0;
+    char matriz[3][3], jogador;
 
-    for (linha = 0; linha < 3; linha++) {
-        for (coluna = 0; coluna < 3; coluna++) {
-            tabuleiro[linha][coluna] = '.';
+    for (coordL = 0; coordL < 3; coordL++) {
+        for (coordC = 0; coordC < 3; coordC++) {
+            matriz[coordL][coordC] = ' ';
         }
     }
 
-    /* //SELECIONAR ESCOLHA
-    printf("Desejas ser X ou O? (Digite 1 para X e 2 para O)");
-    scanf("%d", &escolha);
-    if (escolha == 1){
+    printf("Jogador 1, desejas ser X ou O? (Digite 1 para 'X' e 2 para 'O')");
+     //SELECIONAR ESCOLHA
+     while (escolha != 1 && escolha != 2){
+        scanf("%d", &escolha);
+        if (escolha != 1 && escolha != 2){
+            printf("Escolha invalida, tente novamente!");
+        }
+     }
+    while (rodada < 10){
+        if (escolha == 1) {  //Jogador quer ser o XIS
         if (rodada % 2 == 1) {
             jogador = 'X';
-    }
-    else {
-        jogador = 'O';
-    } else {  //Jogador quer ser O BOLA
-            if (rodada % 2 == 1) {
+      } else {
             jogador = 'O';
+    }} else if (escolha == 2) {  //Jogador quer ser O BOLA
+        if (rodada % 2 == 1) {
+            jogador = 'O';
+        } else {
+            jogador = 'X';
+        }
     }
-    else {
-        jogador = 'X';
-      }
-    }
-*/
-while (1){
-        printf("Vez de Jogador %c: ", JogX);
+        printf("\n\nVez de Jogador '%c':\n", jogador);
+    do {
         scanf("%d %d", &coordL, &coordC);
 
     //Se posiçao existe, e se for mt grande
-        if (coordL >= 0 && coordL < 3 && coordC >= 0 && coordC < 3) {
-            tabuleiro[coordL][coordC] = JogX;
-        } else {
-            printf("Coordenada invalida! Tente de novo!\n");
+        if (matriz[coordL][coordC] != Vazio){
+            printf("Coordenada ocupada! Tente outra!");
+            rodada--;
+        } else if (coordL < 0 && coordL > 2 && coordC < 0 && coordC > 2){
+            printf("Coordenada invalida! Tente outra!\n");
+            rodada--;
+        }else if (coordL >= 0 && coordL < 3 && coordC >= 0 && coordC < 3) {
+            matriz[coordL][coordC] = jogador;
         }
-   // Se estiver preenchido (diferente de vazio)
-        if (tabuleiro[coordL][coordC] =! Vazio){
-            printf("JA PREENCHIDO! Tente de novo!");
+        } while (coordL < 0 && coordL > 2 && coordC < 0 && coordC > 2);
+        
+        printf("\n\n    0   1   2 \n");
+        printf("\n0   %c | %c | %c ", matriz[0][0], matriz[0][1], matriz[0][2]);
+	    printf("\n   -----------");
+    	printf("\n1   %c | %c | %c ", matriz[1][0], matriz[1][1], matriz[1][2]);
+	    printf("\n   -----------");
+    	printf("\n2   %c | %c | %c ", matriz[2][0], matriz[2][1], matriz[2][2]);
+
+        for(int j = 0; j < 3; j++){
+            win = 0;
+            for(int i = 0; i < 3; i++){
+                if(matriz[i][j] == 'X'){
+                    win++;
+                }
+            }
+            if (win == 3){
+                printf("\nJogador 'X' ganhou! :D\n");
+                return 0;
+            }
         }
 
-    //imprimir tabuleiro
-        for (linha = 0; linha < 3; linha++) {
-            for (coluna = 0; coluna < 3; coluna++) {
-                printf("%c ", tabuleiro[linha][coluna]);
+        rodada++;
+    }
+
+    for(int j = 0; j < 3; j++){
+        win = 0;
+        for(int i = 0; i < 3; i++){
+            if(matriz[i][j] == 'X'){
+                win++;
             }
-            printf("\n");
+        }
+        if (win == 3){
+            printf("\nJogador 'X' ganhou! :D\n");
+            return 0;
         }
     }
+
+    printf("\n\nDeu velha! :P\n");
 
     return 0;
 }
