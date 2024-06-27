@@ -34,16 +34,18 @@ int main() {
             jogador = 'O';
         } else {
             jogador = 'X';
-        }
+        } 
     }
         printf("\n\nVez de Jogador '%c':\n", jogador);
     do {
         scanf("%d %d", &coordL, &coordC);
 
-    //Se posiçao existe, e se for mt grande
+    //Condições de posic ocupada, o alem dos limites
         if (matriz[coordL][coordC] != Vazio){
             printf("Coordenada ocupada! Tente outra!");
             rodada--;
+        } else if (coordC != 0 && coordC != 1 && coordC != 2 && coordL != 0 && coordL != 1 && coordL != 2){
+            printf("Caractere invalido!");
         } else if (coordL < 0 && coordL > 2 && coordC < 0 && coordC > 2){
             printf("Coordenada invalida! Tente outra!\n");
             rodada--;
@@ -74,7 +76,7 @@ int main() {
 
         rodada++;
     }
-
+//VITORIA
     for(int j = 0; j < 3; j++){
         win = 0;
         for(int i = 0; i < 3; i++){
