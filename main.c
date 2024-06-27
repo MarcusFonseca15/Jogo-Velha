@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define JogX 'X'
-#define JogO 'O'
 #define Vazio ' '
 
 int main() {
     int coordL, coordC;
-    int rodada = 1, win = 0, escolha = 0;
+    int rodada = 1, escolha = 0;
+
     char matriz[3][3], jogador;
 
     for (coordL = 0; coordL < 3; coordL++) {
@@ -15,7 +14,7 @@ int main() {
         }
     }
 
-    printf("Jogador 1, desejas ser X ou O? (Digite 1 para 'X' e 2 para 'O')");
+    printf("Desejas ser X ou O? (Digite 1 para 'X' e 2 para 'O')");
      //SELECIONAR ESCOLHA
      while (escolha != 1 && escolha != 2){
         scanf("%d", &escolha);
@@ -43,16 +42,13 @@ int main() {
     //Condições de posic ocupada, o alem dos limites
         if (matriz[coordL][coordC] != Vazio){
             printf("Coordenada ocupada! Tente outra!");
-            rodada--;
-        } else if (coordC != 0 && coordC != 1 && coordC != 2 && coordL != 0 && coordL != 1 && coordL != 2){
-            printf("Caractere invalido!");
         } else if (coordL < 0 && coordL > 2 && coordC < 0 && coordC > 2){
             printf("Coordenada invalida! Tente outra!\n");
-            rodada--;
-        }else if (coordL >= 0 && coordL < 3 && coordC >= 0 && coordC < 3) {
+        } else {
             matriz[coordL][coordC] = jogador;
+            break;
         }
-        } while (coordL < 0 && coordL > 2 && coordC < 0 && coordC > 2);
+        } while (1);
         
         printf("\n\n    0   1   2 \n");
         printf("\n0   %c | %c | %c ", matriz[0][0], matriz[0][1], matriz[0][2]);
@@ -61,33 +57,22 @@ int main() {
 	    printf("\n   -----------");
     	printf("\n2   %c | %c | %c ", matriz[2][0], matriz[2][1], matriz[2][2]);
 
-        for(int j = 0; j < 3; j++){
-            win = 0;
-            for(int i = 0; i < 3; i++){
-                if(matriz[i][j] == 'X'){
-                    win++;
-                }
-            }
-            if (win == 3){
-                printf("\nJogador 'X' ganhou! :D\n");
-                return 0;
-            }
-        }
-
-        rodada++;
-    }
-//VITORIA
+    //VITORIA
     for(int j = 0; j < 3; j++){
-        win = 0;
-        for(int i = 0; i < 3; i++){
-            if(matriz[i][j] == 'X'){
-                win++;
-            }
-        }
-        if (win == 3){
-            printf("\nJogador 'X' ganhou! :D\n");
+        if (matriz[0][j] == jogador && matriz[1][j] == jogador && matriz[2][j] == jogador){
+            printf("\nJogador '%c' ganhou! :D\n", jogador);
             return 0;
         }
+    }
+    for (int i = 0; i < 3; i++) {
+        if (matriz[i][0] == jogador && matriz[i][1] == jogador && matriz[i][2] == jogador) {
+            printf("\nJogador '%c' ganhou! :D\n", jogador);
+            return 0;
+        }
+    }
+
+
+        rodada++;
     }
 
     printf("\n\nDeu velha! :P\n");
