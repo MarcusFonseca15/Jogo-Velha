@@ -13,7 +13,7 @@ int main() {
         }
     }
 
-    printf("Desejas ser X ou O? (Digite 1 para 'X' e 2 para 'O')");
+    printf("Desejas ser X ou O? (Digite 1 para 'X' e 2 para 'O'): ");
      //SELECIONAR ESCOLHA
      while (escolha != 1 && escolha != 2){
         scanf("%d", &escolha);
