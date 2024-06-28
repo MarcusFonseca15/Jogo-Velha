@@ -5,7 +5,6 @@
 int main() {
     int coordL, coordC;
     int rodada = 1, escolha = 0;
-
     char matriz[3][3], jogador;
 
     for (coordL = 0; coordL < 3; coordL++) {
@@ -35,6 +34,15 @@ int main() {
             jogador = 'X';
         } 
     }
+        if(rodada == 1){
+        printf("\nTabela do jogo:");
+        printf("\n\n    0   1   2 \n");
+        printf("\n0   %c | %c | %c ", matriz[0][0], matriz[0][1], matriz[0][2]);
+	    printf("\n   -----------");
+    	printf("\n1   %c | %c | %c ", matriz[1][0], matriz[1][1], matriz[1][2]);
+	    printf("\n   -----------");
+    	printf("\n2   %c | %c | %c ", matriz[2][0], matriz[2][1], matriz[2][2]);
+        }
         printf("\n\nVez de Jogador '%c':\n", jogador);
     do {
         scanf("%d %d", &coordL, &coordC);
@@ -70,8 +78,14 @@ int main() {
             return 0;
         }
     }
-
-
+    if (matriz[0][0] == jogador && matriz[1][1] == jogador && matriz[2][2] == jogador) {
+        printf("\nJogador '%c' ganhou! :D\n", jogador);
+        return 0;
+    }
+    if (matriz[0][2] == jogador && matriz[1][1] == jogador && matriz[2][0] == jogador) {
+        printf("\nJogador '%c' ganhou! :D\n", jogador);
+        return 0;
+    }
         rodada++;
     }
 
