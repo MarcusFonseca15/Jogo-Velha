@@ -88,8 +88,7 @@ int main() {
     }
         rodada++;
     }
-
     printf("\n\nDeu velha! :P\n");
-
+    
     return 0;
 }
