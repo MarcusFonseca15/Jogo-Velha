@@ -48,10 +48,10 @@ int main() {
         scanf("%d %d", &coordL, &coordC);
 
     //Condições de posic ocupada, o alem dos limites
-        if (matriz[coordL][coordC] != Vazio){
-            printf("Coordenada ocupada! Tente outra!");
-        } else if (coordL < 0 && coordL > 2 && coordC < 0 && coordC > 2){
+        if (coordL < 0 || coordL > 2 || coordC < 0 || coordC > 2){
             printf("Coordenada invalida! Tente outra!\n");
+        } else if (matriz[coordL][coordC] != Vazio){
+            printf("Coordenada ocupada! Tente outra!");
         } else {
             matriz[coordL][coordC] = jogador;
             break;
